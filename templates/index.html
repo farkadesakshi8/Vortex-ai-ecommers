@@ -2,25 +2,25 @@
 {% block title %}Matrix Core - VORTEX.AI{% endblock %}
 
 {% block content %}
-<div class="space-y-8 pb-12">
+<div class="space-y-8 pb-12 w-full max-w-7xl mx-auto px-2 sm:px-4">
     
     <!-- Hero Section -->
-    <div class="vortex-glass p-6 sm:p-10 rounded-3xl relative overflow-hidden shadow-2xl border border-cyan-500/20">
+    <div class="vortex-glass p-5 sm:p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-2xl border border-cyan-500/20">
         <div class="absolute -right-20 -top-20 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
         
-        <div class="max-w-3xl space-y-5 relative z-10">
-            <div class="flex flex-wrap items-center gap-3">
+        <div class="max-w-4xl space-y-4 sm:space-y-6 relative z-10">
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3">
                 <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-[10px] sm:text-xs font-black rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
                     <i class="fa-solid fa-circle-nodes"></i> Neural Telemetry Active
                 </span>
                 <span class="text-xs text-slate-400 font-bold">28,437 Active Accounts</span>
             </div>
 
-            <h1 class="syne text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            <h1 class="syne text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-snug sm:leading-tight break-words">
                 Enterprise E-Commerce Intelligence & Churn AI
             </h1>
 
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium max-w-2xl">
                 Verified on 31,047 real transactional orders across <span class="text-cyan-400 font-bold">40 Indian States</span>. Primary sales volume is led by <span class="text-cyan-400 font-bold">Amazon</span>, with top grossing retail category being <span class="text-cyan-400 font-bold">Set</span>.
             </p>
 
@@ -37,13 +37,12 @@
 
     <!-- Quick Stats Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        
         <div class="vortex-glass p-5 rounded-2xl shadow-xl space-y-2">
             <div class="flex items-center justify-between text-slate-400">
                 <span class="text-xs font-bold uppercase tracking-wider">Gross Revenue</span>
                 <i class="fa-solid fa-indian-rupee-sign text-cyan-400"></i>
             </div>
-            <p class="syne text-xl sm:text-2xl font-black text-white">₹2,11,76,377</p>
+            <p class="syne text-xl sm:text-2xl font-black text-white truncate">₹2,11,76,377</p>
             <div class="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
                 <i class="fa-solid fa-arrow-trend-up"></i> +14.2% MoM Growth
             </div>
@@ -54,7 +53,7 @@
                 <span class="text-xs font-bold uppercase tracking-wider">Total Orders</span>
                 <i class="fa-solid fa-box-archive text-indigo-400"></i>
             </div>
-            <p class="syne text-xl sm:text-2xl font-black text-white">28,471</p>
+            <p class="syne text-xl sm:text-2xl font-black text-white truncate">28,471</p>
             <div class="text-[10px] text-indigo-400 font-bold flex items-center gap-1">
                 <i class="fa-solid fa-circle-check"></i> 91.7% Delivery Success
             </div>
@@ -65,7 +64,7 @@
                 <span class="text-xs font-bold uppercase tracking-wider">Churn Risk Rate</span>
                 <i class="fa-solid fa-triangle-exclamation text-rose-400"></i>
             </div>
-            <p class="syne text-xl sm:text-2xl font-black text-white">15.8%</p>
+            <p class="syne text-xl sm:text-2xl font-black text-white truncate">15.8%</p>
             <div class="text-[10px] text-rose-400 font-bold flex items-center gap-1">
                 <i class="fa-solid fa-shield-halved"></i> 4,502 At-Risk Users
             </div>
@@ -76,12 +75,108 @@
                 <span class="text-xs font-bold uppercase tracking-wider">Avg Order Value</span>
                 <i class="fa-solid fa-wallet text-amber-400"></i>
             </div>
-            <p class="syne text-xl sm:text-2xl font-black text-white">₹644</p>
+            <p class="syne text-xl sm:text-2xl font-black text-white truncate">₹644</p>
             <div class="text-[10px] text-amber-400 font-bold flex items-center gap-1">
                 <i class="fa-solid fa-star"></i> High Basket Density
             </div>
         </div>
+    </div>
 
+    <!-- State & Regional Sales Telemetry Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Top States Breakdown -->
+        <div class="lg:col-span-2 vortex-glass p-5 sm:p-6 rounded-3xl shadow-xl space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+                <div>
+                    <h3 class="syne text-base sm:text-lg font-black text-white">Top Sales Regions & States</h3>
+                    <p class="text-xs text-slate-400">Real-time order distribution across primary Indian territories</p>
+                </div>
+                <span class="px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-[10px] font-bold rounded-lg">
+                    40 States Active
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-slate-400 font-bold">1. Maharashtra</p>
+                        <p class="text-sm font-black text-cyan-400">₹42,80,150</p>
+                    </div>
+                    <span class="text-xs text-emerald-400 font-bold">5,820 orders</span>
+                </div>
+                <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-slate-400 font-bold">2. Karnataka</p>
+                        <p class="text-sm font-black text-cyan-400">₹34,12,900</p>
+                    </div>
+                    <span class="text-xs text-emerald-400 font-bold">4,610 orders</span>
+                </div>
+                <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-slate-400 font-bold">3. Uttar Pradesh</p>
+                        <p class="text-sm font-black text-cyan-400">₹28,95,400</p>
+                    </div>
+                    <span class="text-xs text-emerald-400 font-bold">3,980 orders</span>
+                </div>
+                <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-slate-400 font-bold">4. Tamil Nadu</p>
+                        <p class="text-sm font-black text-cyan-400">₹22,10,300</p>
+                    </div>
+                    <span class="text-xs text-emerald-400 font-bold">3,120 orders</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sales Channels & Categories Breakdown -->
+        <div class="vortex-glass p-5 sm:p-6 rounded-3xl shadow-xl space-y-4">
+            <div class="border-b border-slate-800/80 pb-3">
+                <h3 class="syne text-base sm:text-lg font-black text-white">Dominant Channels</h3>
+                <p class="text-xs text-slate-400">Platform acquisition share</p>
+            </div>
+
+            <div class="space-y-3 pt-1">
+                <div>
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-slate-300">Amazon</span>
+                        <span class="text-cyan-400">35.4%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-cyan-400 h-full rounded-full" style="width: 35.4%"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-slate-300">Myntra</span>
+                        <span class="text-indigo-400">27.8%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-indigo-500 h-full rounded-full" style="width: 27.8%"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-slate-300">Flipkart</span>
+                        <span class="text-violet-400">21.2%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-violet-500 h-full rounded-full" style="width: 21.2%"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-slate-300">Ajio / Direct</span>
+                        <span class="text-amber-400">15.6%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="bg-amber-400 h-full rounded-full" style="width: 15.6%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
