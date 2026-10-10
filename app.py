@@ -73,7 +73,7 @@ def analytics():
                            channels=channel_rev,
                            age_rev=age_rev)
 
-@app.route('/predict-page')
+@app.route('/predict')
 def predict_page():
     return render_template('predict.html')
 
