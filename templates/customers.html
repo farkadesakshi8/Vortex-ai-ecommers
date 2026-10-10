@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %}Customer Directory - VORTEX.AI{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    
+    <!-- Header & Search Controls -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h2 class="syne text-2xl font-black text-white">Enterprise Data Nexus Directory</h2>
+            <p class="text-xs text-slate-400 mt-1 font-medium">Live transactional customer records with multi-criteria regex filtering</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+            <!-- Search Bar -->
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-xs text-slate-400"></i>
+                <input type="text" id="tableSearch" onkeyup="filterTable()" placeholder="Search Cust ID or state..." class="bg-slate-900 border border-slate-700/80 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500 w-52 font-bold transition-all">
+            </div>
+
+            <!-- Channel Filter Dropdown -->
+            <select id="channelFilter" onchange="filterTable()" class="bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-xs text-slate-300 font-bold focus:outline-none cursor-pointer">
+                <option value="">All Sales Channels</option>
+                {% for ch in channels %}
+                <option value="{{ ch }}">{{ ch }}</option>
+                {% endfor %}
+            </select>
+
+            <!-- Export CSV Button -->
+            <a href="/export-csv" class="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-cyan-500/30 flex items-center gap-2">
+                <i class="fa-solid fa-file-arrow-down"></i> Export CSV
+            </a>
+        </div>
+    </div>
+
+    <!-- Data Table Container -->
+    <div class="vortex-glass rounded-3xl overflow-hidden shadow-2xl border border-cyan-500/20">
+        <div class="overflow-x-auto max-h-[620px]">
+            <table class="w-full text-left border-collapse text-xs">
+                <thead class="sticky top-0 bg-slate-900/95 backdrop-blur-md text-cyan-400 border-b border-cyan-500/20 font-extrabold uppercase tracking-wider z-10">
+                    <tr>
+                        <th class="py-4 px-5">Cust ID</th>
+                        <th class="py-4 px-5">Gender / Age</th>
+                        <th class="py-4 px-5">Sales Channel</th>
+                        <th class="py-4 px-5">Product Category</th>
+                        <th class="py-4 px-5">Order Amount (₹)</th>
+                        <th class="py-4 px-5">Delivery Status</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTableBody" class="divide-y divide-slate-800/60 text-slate-300 font-semibold">
+                    {% for c in customers %}
+                    <tr class="hover:bg-slate-900/50 transition-colors" data-channel="{{ c['Channel '] }}">
+                        <td class="py-3.5 px-5 font-mono font-bold text-white">#{{ c['Cust ID'] }}</td>
+                        <td class="py-3.5 px-5">{{ c['Gender'] }} ({{ c['Age'] }})</td>
+                        <td class="py-3.5 px-5">
+                            <span class="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                                {{ c['Channel '] }}
+                            </span>
+                        </td>
+                        <td class="py-3.5 px-5">{{ c['Category'] }}</td>
+                        <td class="py-3.5 px-5 font-black text-emerald-400">₹{{ c['Amount'] }}</td>
+                        <td class="py-3.5 px-5">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                {{ c['Status'] }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Dynamic Table Filtering Script -->
+<script>
+    function filterTable() {
+        const query = document.getElementById('tableSearch').value.toLowerCase();
+        const selectedChannel = document.getElementById('channelFilter').value.toLowerCase();
+        const rows = document.querySelectorAll('#customerTableBody tr');
+        
+        rows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            const channel = (row.getAttribute('data-channel') || '').toLowerCase();
+            const matchesQuery = text.includes(query);
+            const matchesChannel = !selectedChannel || channel.includes(selectedChannel);
+            
+            row.style.display = (matchesQuery && matchesChannel) ? '' : 'none';
+        });
+    }
+</script>
+{% endblock %}

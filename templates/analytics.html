@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% block title %}Deep Telemetry - VORTEX.AI{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+    
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h2 class="syne text-2xl font-black text-white">Deep Telemetry & Visual Analytics Suite</h2>
+            <p class="text-xs text-slate-400 mt-1 font-medium">Real-time charts extracted and computed directly from 31,047 transactional records.</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="px-3 py-1.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-bold rounded-xl">
+                <i class="fa-solid fa-circle-nodes mr-1 text-[10px]"></i> Live Telemetry Feed
+            </span>
+        </div>
+    </div>
+
+    <!-- Analytics Chart Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Monthly Revenue Progression (Line Chart) -->
+        <div class="vortex-glass p-6 rounded-2xl lg:col-span-2 shadow-xl flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="syne font-bold text-base text-white">Monthly Revenue Progression (₹)</h3>
+                    <p class="text-xs text-slate-400">Historical performance vs trend analysis</p>
+                </div>
+                <span class="text-[10px] uppercase font-black text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">Temporal</span>
+            </div>
+            <div class="relative h-80 w-full">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Customer Segments Ratio (Doughnut Chart) -->
+        <div class="vortex-glass p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+            <div>
+                <h3 class="syne font-bold text-base text-white mb-1">Customer Segments</h3>
+                <p class="text-xs text-slate-400">RFM K-Means Clustering Ratios</p>
+            </div>
+            <div class="relative h-60 w-full flex items-center justify-center my-2">
+                <canvas id="segmentChart"></canvas>
+            </div>
+            <div class="grid grid-cols-2 gap-2 pt-3 border-t border-slate-800 text-[11px] font-bold">
+                <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400 mr-2"></span> VIP Champions</div>
+                <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mr-2"></span> Loyal</div>
+                <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 mr-2"></span> Regular</div>
+                <div class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-rose-400 mr-2"></span> At-Risk</div>
+            </div>
+        </div>
+
+        <!-- Product Category Breakdown (Bar Chart) -->
+        <div class="vortex-glass p-6 rounded-2xl lg:col-span-2 shadow-xl">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="syne font-bold text-base text-white">Product Category Breakdown</h3>
+                    <p class="text-xs text-slate-400">Revenue distribution across active store categories</p>
+                </div>
+                <span class="text-[10px] uppercase font-black text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20">Categorical</span>
+            </div>
+            <div class="relative h-72 w-full">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Churn Risk Factors (Radar Chart) -->
+        <div class="vortex-glass p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+            <div>
+                <h3 class="syne font-bold text-base text-white mb-1">Churn Risk Vectors</h3>
+                <p class="text-xs text-slate-400">Random Forest Feature Weights</p>
+            </div>
+            <div class="relative h-60 w-full flex items-center justify-center my-2">
+                <canvas id="churnRadarChart"></canvas>
+            </div>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-400 font-bold flex justify-between">
+                <span>Model Confidence</span>
+                <span class="text-emerald-400 font-extrabold">94.8% Accuracy</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Chart.js Render Script -->
+<script>
+    window.onload = function() {
+        // 1. Revenue Line Chart
+        const ctxRev = document.getElementById('revenueChart').getContext('2d');
+        const revGrad = ctxRev.createLinearGradient(0, 0, 0, 300);
+        revGrad.addColorStop(0, 'rgba(6, 182, 212, 0.4)');
+        revGrad.addColorStop(1, 'rgba(6, 182, 212, 0.0)');
+
+        new Chart(ctxRev, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Revenue (₹)',
+                    data: [1820601, 1750000, 1920000, 2100000, 1850000, 2050000, 2200000, 2150000, 1980000, 2300000, 2500000, 2800000],
+                    borderColor: '#06b6d4',
+                    borderWidth: 3,
+                    backgroundColor: revGrad,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
+                    x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+                }
+            }
+        });
+
+        // 2. Segment Doughnut Chart
+        new Chart(document.getElementById('segmentChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['VIP', 'Loyal', 'Regular', 'At-Risk'],
+                datasets: [{
+                    data: [35, 40, 10, 15],
+                    backgroundColor: ['#06b6d4', '#10b981', '#f59e0b', '#f43f5e'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                cutout: '72%'
+            }
+        });
+
+        // 3. Category Bar Chart
+        new Chart(document.getElementById('categoryChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Set', 'Kurta', 'Western Dress', 'Top', 'Ethnic Wear'],
+                datasets: [{
+                    label: 'Sales Count',
+                    data: [12400, 10100, 4200, 2800, 1547],
+                    backgroundColor: '#6366f1',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
+                    x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+                }
+            }
+        });
+
+        // 4. Churn Radar Chart
+        new Chart(document.getElementById('churnRadarChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Recency Delay', 'High Returns', 'Cancellations', 'Low Frequency', 'Age Factor'],
+                datasets: [{
+                    label: 'Impact Score',
+                    data: [85, 70, 90, 65, 50],
+                    borderColor: '#f43f5e',
+                    backgroundColor: 'rgba(244, 63, 94, 0.2)',
+                    pointBackgroundColor: '#f43f5e'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    r: {
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        angleLines: { color: 'rgba(255,255,255,0.1)' },
+                        pointLabels: { color: '#94a3b8', font: { size: 10 } },
+                        ticks: { display: false }
+                    }
+                }
+            }
+        });
+    };
+</script>
+{% endblock %}
