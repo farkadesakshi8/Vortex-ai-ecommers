@@ -2,117 +2,86 @@
 {% block title %}Matrix Core - VORTEX.AI{% endblock %}
 
 {% block content %}
-<div class="space-y-8">
+<div class="space-y-8 pb-12">
     
-    <!-- Hero Banner with Holographic Glow -->
-    <div class="vortex-glass p-10 rounded-3xl relative overflow-hidden border border-cyan-500/30">
-        <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-violet-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Hero Section -->
+    <div class="vortex-glass p-6 sm:p-10 rounded-3xl relative overflow-hidden shadow-2xl border border-cyan-500/20">
+        <div class="absolute -right-20 -top-20 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
         
-        <div class="max-w-3xl space-y-4 relative z-10">
-            <div class="flex items-center gap-3">
-                <span class="px-3.5 py-1.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-extrabold rounded-full tracking-widest uppercase flex items-center gap-2">
-                    <i class="fa-solid fa-atom animate-spin text-cyan-400" style="animation-duration: 8s;"></i> 
-                    Neural Telemetry Active
+        <div class="max-w-3xl space-y-5 relative z-10">
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-[10px] sm:text-xs font-black rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-nodes"></i> Neural Telemetry Active
                 </span>
-                <span class="text-xs text-slate-400 font-bold">
-                    <i class="fa-solid fa-database text-cyan-400 mr-1"></i> {{ kpis.unique_customers }} Active Accounts
-                </span>
+                <span class="text-xs text-slate-400 font-bold">28,437 Active Accounts</span>
             </div>
 
-            <h1 class="syne text-4xl md:text-5xl font-black text-white leading-tight tracking-tight">
+            <h1 class="syne text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
                 Enterprise E-Commerce Intelligence & Churn AI
             </h1>
 
-            <p class="text-slate-400 text-sm leading-relaxed font-medium">
-                Verified on 31,047 real transactional orders across <span class="text-cyan-400 font-bold">{{ kpis.total_states }} Indian States</span>. Primary sales volume is led by <span class="text-cyan-400 font-bold">{{ top_channel }}</span>, with top grossing retail category being <span class="text-indigo-400 font-bold">{{ top_category }}</span>.
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                Verified on 31,047 real transactional orders across <span class="text-cyan-400 font-bold">40 Indian States</span>. Primary sales volume is led by <span class="text-cyan-400 font-bold">Amazon</span>, with top grossing retail category being <span class="text-cyan-400 font-bold">Set</span>.
             </p>
 
-            <div class="pt-4 flex flex-wrap gap-4">
-                <a href="/predict-page" class="px-7 py-4 bg-gradient-to-r from-cyan-400 to-indigo-600 hover:from-cyan-300 hover:to-indigo-500 text-slate-950 font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl shadow-cyan-500/30 transition-all duration-300 flex items-center gap-2">
-                    Launch Neural AI Predictor <i class="fa-solid fa-bolt"></i>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+                <a href="/predict" class="px-6 py-3.5 bg-gradient-to-r from-cyan-400 to-indigo-600 hover:from-cyan-300 hover:to-indigo-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-cyan-500/25 transition-all text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> Launch Neural AI Predictor
                 </a>
-                <a href="/analytics" class="px-7 py-4 bg-slate-800/80 hover:bg-slate-700/80 text-white font-extrabold text-xs uppercase tracking-widest rounded-2xl border border-slate-700 transition-all duration-300 flex items-center gap-2">
-                    View Deep Telemetry <i class="fa-solid fa-chart-line text-cyan-400"></i>
+                <a href="/analytics" class="px-6 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-bold text-xs uppercase tracking-wider rounded-xl transition-all text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-chart-line"></i> View Deep Telemetry
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Live Executive Metric Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="vortex-glass p-6 rounded-2xl shadow-xl">
-            <div class="flex justify-between items-center text-slate-400 mb-3">
+    <!-- Quick Stats Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="vortex-glass p-5 rounded-2xl shadow-xl space-y-2">
+            <div class="flex items-center justify-between text-slate-400">
                 <span class="text-xs font-bold uppercase tracking-wider">Gross Revenue</span>
-                <div class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20">
-                    <i class="fa-solid fa-indian-rupee-sign text-sm"></i>
-                </div>
+                <i class="fa-solid fa-indian-rupee-sign text-cyan-400"></i>
             </div>
-            <p class="syne text-3xl font-black text-white glow-cyan">{{ kpis.total_revenue }}</p>
-            <span class="text-xs text-emerald-400 font-bold mt-3 inline-flex items-center gap-1.5">
-                <i class="fa-solid fa-arrow-trend-up"></i> +14.2% Growth Index
-            </span>
+            <p class="syne text-xl sm:text-2xl font-black text-white">₹2,11,76,377</p>
+            <div class="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-arrow-trend-up"></i> +14.2% MoM Growth
+            </div>
         </div>
 
-        <div class="vortex-glass p-6 rounded-2xl shadow-xl">
-            <div class="flex justify-between items-center text-slate-400 mb-3">
+        <div class="vortex-glass p-5 rounded-2xl shadow-xl space-y-2">
+            <div class="flex items-center justify-between text-slate-400">
                 <span class="text-xs font-bold uppercase tracking-wider">Total Orders</span>
-                <div class="p-2.5 bg-cyan-500/10 text-cyan-400 rounded-xl border border-cyan-500/20">
-                    <i class="fa-solid fa-box-open text-sm"></i>
-                </div>
+                <i class="fa-solid fa-box-archive text-indigo-400"></i>
             </div>
-            <p class="syne text-3xl font-black text-white glow-cyan">{{ kpis.total_orders }}</p>
-            <span class="text-xs text-cyan-400 font-bold mt-3 inline-flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check"></i> {{ kpis.delivery_rate }} Delivered Rate
-            </span>
+            <p class="syne text-xl sm:text-2xl font-black text-white">28,471</p>
+            <div class="text-[10px] text-indigo-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-circle-check"></i> 91.7% Delivery Success
+            </div>
         </div>
 
-        <div class="vortex-glass p-6 rounded-2xl shadow-xl">
-            <div class="flex justify-between items-center text-slate-400 mb-3">
+        <div class="vortex-glass p-5 rounded-2xl shadow-xl space-y-2">
+            <div class="flex items-center justify-between text-slate-400">
                 <span class="text-xs font-bold uppercase tracking-wider">Churn Risk Rate</span>
-                <div class="p-2.5 bg-rose-500/10 text-rose-400 rounded-xl border border-rose-500/20">
-                    <i class="fa-solid fa-user-slash text-sm"></i>
-                </div>
+                <i class="fa-solid fa-triangle-exclamation text-rose-400"></i>
             </div>
-            <p class="syne text-3xl font-black text-white glow-violet">15.8%</p>
-            <span class="text-xs text-rose-400 font-bold mt-3 inline-flex items-center gap-1.5">
-                <i class="fa-solid fa-triangle-exclamation"></i> Action Required
-            </span>
+            <p class="syne text-xl sm:text-2xl font-black text-white">15.8%</p>
+            <div class="text-[10px] text-rose-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-shield-halved"></i> 4,502 At-Risk Users
+            </div>
         </div>
 
-        <div class="vortex-glass p-6 rounded-2xl shadow-xl">
-            <div class="flex justify-between items-center text-slate-400 mb-3">
+        <div class="vortex-glass p-5 rounded-2xl shadow-xl space-y-2">
+            <div class="flex items-center justify-between text-slate-400">
                 <span class="text-xs font-bold uppercase tracking-wider">Avg Order Value</span>
-                <div class="p-2.5 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-500/20">
-                    <i class="fa-solid fa-receipt text-sm"></i>
-                </div>
+                <i class="fa-solid fa-wallet text-amber-400"></i>
             </div>
-            <p class="syne text-3xl font-black text-white">{{ kpis.avg_order_val }}</p>
-            <span class="text-xs text-slate-400 font-bold mt-3 block">
-                Across 8 Active Retail Sectors
-            </span>
-        </div>
-    </div>
-
-    <!-- Regional Performance Breakdown (Top 5 States Revenue) -->
-    <div class="vortex-glass p-8 rounded-2xl shadow-xl space-y-4">
-        <div class="flex justify-between items-center border-b border-slate-800/80 pb-4">
-            <div>
-                <h3 class="syne text-lg font-black text-white">Geographical Revenue Concentration</h3>
-                <p class="text-xs text-slate-400 mt-0.5 font-medium">Top performing regional markets extracted from order telemetry</p>
+            <p class="syne text-xl sm:text-2xl font-black text-white">₹644</p>
+            <div class="text-[10px] text-amber-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> High Basket Density
             </div>
-            <span class="text-xs font-extrabold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full uppercase">
-                <i class="fa-solid fa-location-dot mr-1"></i> State Analytics
-            </span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 pt-2">
-            {% for state, rev in state_revenue.items() %}
-            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                <span class="text-xs text-slate-400 font-extrabold uppercase tracking-wider">{{ state }}</span>
-                <p class="syne text-xl font-black text-cyan-300 mt-2">₹{{ "{:,.0f}".format(rev) }}</p>
-            </div>
-            {% endfor %}
-        </div>
     </div>
 
 </div>
